@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+        <title>Form: New Customer</title>
+
+
+    {% load static %}
+
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/bootstrap.css' %}"  />
+    <!-- FONT AWESOME ICONS  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/font-awesome.css' %}" />
+    <!-- CUSTOM STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/style.css' %}"  />
+    <style type="text/css">
+textarea{
+    width: 100%;
+    height: 80px;
+    padding: 6px;
+    box-sizing: border-box;
+    border-radius: 4px;
+   line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    
+}
+textarea :focus, input[type=text] : focus, select :focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+} select {
+    border: 2px solid #ccc;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+} 
+input[type=text], select{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+    </style>
+</head>
+<body>
+    <header class="btn_section">
+        <div class="container hidden-print">
+            <div class="row">
+                 <div class="col-md-12 hidden-print">
+                    <div class="col-md-2">
+                           <a class="btn btn-default  hidden-print" href="/FaceBiometricsApp/"> <i class="glyphicon glyphicon-arrow-left"></i> Back to Home </a>
+                      </div> &nbsp; &nbsp;&nbsp;&nbsp;
+                   <div class="col-md-6 hidden-print" >
+                 <i class="glyphicon glyphicon-envelope"></i>
+                    <a href="mailto:mule.dtu.it@gmail.com" style="color: #FFF">info@fbpcc.com</a> 
+                    &nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-phone"></i>: +90-533-889-4254
+                </div>
+                <div class="header-menu pull-right" >
+                    
+                        Welcome {{user.first_name}}
+                      
+                                <a href="{% url 'logout' %}" class="btn btn-default btn-xs">
+                                        <i class=""></i>&nbsp; Logout</a>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+  
+    <div class="content-wrapper">
+            <div class="container">
+                  <div class="row">
+                      <div class="col-md-12">
+                            <h1 class="page-head-line">PCC Application : Please Fill All Form Elements Accordingly </h1>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                            {% if perms.FaceBiometricsApp.add_pccapplication %}
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Personal Information  
+                                
+                            </div>
+                            <div class="panel-body">
+                                
+                                
+                             <form action="pcc_application" method="POST">
+                                    {% csrf_token %} 
+                                    {{ form.non_field_errors }}
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                                 <label for="customer">Applicant Passport Number or Residence ID:</label>
+                                                 {{form.customer}} 
+
+                                         </div>
+                                            
+                                        </div>
+                                        <div class="col-md-2"  style="padding-top: 10px;"><br>
+                                            <a href="add_customer" class="btn btn-xs btn btn-success pull-left">New customer</a>
+                                        </div>
+                                      <div class="col-md-12">
+                                                    <div class="form-group">
+                                                            <label for="Reasonforrequest">Reason for Request:</label>
+                                                            {{form.reason_for_request}}
+                                                        </div>
+                                                </div>
+                                            <div class="col-md-12">
+                                                    <div class="form-group">
+                                                            <label for="Clearancerequestedby">Clearance Requested by:</label>
+                                                            {{form.clearance_requested_by}}
+                                                        </div>
+                                                </div> 
+                                            <div class="col-md-6">
+                                                        <div class="form-group">
+                                                                <label for="Referencenumber">Reference Number:</label>
+                                                                {{form.reference_number}}
+                                                            </div>
+                                                </div>
+                                            <div class="col-md-4">
+                                                        <div class="form-group">
+                                                                <label for="Date">Date:</label>
+                                                                {{form.date}}
+                                                                Please use the following format: MM/DD/YYYY
+                                                            </div>
+                                                </div>
+                                          
+                                     <div class="col-md-6 hidden-print">
+                                            <button class="btn btn-success btn-lg" >
+                                                    <i class="glyphicon glyphicon-arrow-right"></i>
+                                                    Continue...
+                                                </button>
+                                       
+                                        </div>
+                                        <div class="col-md-6 hidden-print">
+                                                {% if message %}
+                                                    {% if message %}
+                                                      
+                                                  <a class="btn btn-lg btn btn-danger" href="FaceRecognitionLogic"><i class="glyphicon glyphicon-camera"></i> Continue Recognition</a>
+                                                        {% endif %}
+                                                     {% endif %}
+                                                </div>
+                                        
+                                    
+                                    </form>
+                                   
+                                </div>
+                                </div>
+                                
+                        </div>
+                        {%else%}
+                        
+                        <div class="col-md-12 ">
+                                <div class="alert alert-danger" style="font-size: 16px;">
+                                    
+                                   <p style="color:#000">Oops, You don't have permission to do on this page. please contact your administrator.
+                                But, you do have the following permissions instead </p>
+                                <p>    {{ perms.FaceRecognitionApp }}</p>
+                                  
+                                </div>
+                            </div>
+                        {%endif%}
+                </div>
+            </div>
+        </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2018 Ethiopian Police Clearnace Certificate Offering Application | By : <a href="#" target="_blank">Mulatu Astarkie</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/jquery-1.11.1.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/bootstrap.js' %}"></script>
+</body>
+</html>

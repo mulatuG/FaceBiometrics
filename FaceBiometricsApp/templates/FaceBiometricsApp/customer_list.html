@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Free Responsive Admin Theme - ZONTAL</title>
+    {% load static %}
+
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/bootstrap.css' %}"  />
+    <!-- FONT AWESOME ICONS  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/font-awesome.css' %}" />
+    <!-- CUSTOM STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/style.css' %}"  />
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/DataTables/datatables.min.css' %}"  />
+</head>
+<body>
+     <header class="btn_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-2 hidden-print">
+                         <a class="btn btn-default  hidden-print" href="/FaceBiometricsApp"><i class="glyphicon glyphicon-arrow-left"></i> Back to Home </a>
+                    </div>
+                      <div class="col-md-6 hidden-print" >
+                 <i class="glyphicon glyphicon-envelope"></i>
+                    <a href="mailto:mule.dtu.it@gmail.com" style="color: #FFF">info@fbpcc.com</a> 
+                    &nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-phone"></i>: +90-533-889-4254
+                </div>
+                <div class="header-menu hidden-print" >
+                    
+                        Welcome {{user.get_full_name}}
+                        
+                                <a href="{% url 'logout' %}" class="btn btn-default btn-xs">
+                                        <i class=""></i>&nbsp; Logout</a>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+  <!-- 
+  <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a class="menu-top-active" href="index.html">Dashboard</a></li>
+                            <li><a href="ui.html">UI Elements</a></li>
+                            <li><a href="table.html">Data Tables</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                             <li><a href="login.html">Login Page</a></li>
+                            <li><a href="blank.html">Blank Page</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    -->
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="page-head-line">Customer Table : List of All Customers in the application Database</h1>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>Ref. No.</th>
+                                        <th>Passport Number or Residence ID</th>
+                                        <th>Full Name </th>
+                                        <th>Date of Birth</th>
+                                        <th>Place of Birth</th>
+                                        <th>Sex</th>
+                                        <th>Nationality</th>
+                                        <th>User Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if customers %}
+                                    {% for customer in customers %}
+                                    <tr>
+                                        <td># {{ customer.id }}</td>
+                                        <td>{{ customer.passport_number_or_residence_id }} </td>
+                                        <td>{{ customer.name }} {{ customer.father_name }} {{ customer.surname }}</td>
+                                        
+                                        <td>{{ customer.date_of_birth }} </td>
+                                        <td>{{ customer.place_of_birth }}</td>
+                                        <td>{{customer.sex }}</td>
+                                        <td>{{ customer.nationality }}</td>
+                                        <td> <a href="#"  class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> View</a> <a href="#"  class="btn btn-xs btn-danger"  ><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                   
+                                </tbody>
+                            </table>
+                  </div>
+    
+            </div>
+        </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2018 Ethiopian Police Clearnace Certificate Offering Application | By : <a href="#" target="_blank">Mulatu Astarkie</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/jquery-1.11.1.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/bootstrap.js' %}"></script>
+    <script src="{% static 'FaceRecognitionApp/DataTables/dataTables.js' %}"></script>
+    <script src="{% static 'FaceRecognitionApp/DataTables/dataTables.min.js' %}"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+            } );
+        </script>
+</body>
+</html>

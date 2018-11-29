@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login: Improved Ethiopian Police Clearance Certificate Using Facebiometrics </title>
+        {% load static %}
+
+        <!-- BOOTSTRAP CORE STYLE  -->
+        <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/bootstrap.css' %}"  />
+        <!-- FONT AWESOME ICONS  -->
+        <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/font-awesome.css' %}" />
+        <!-- CUSTOM STYLE  -->
+        <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/style.css' %}"  />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                  <div class="col-md-12 hidden-print" >
+                   <strong> Prototype : Improved Ethiopian Police Clearance Certificate Using Facebiometrics </strong>
+                 <div class="pull-right"><i class="glyphicon glyphicon-envelope"></i>
+                    <a href="mailto:mule.dtu.it@gmail.com" style="color: #FFF">info@fbpcc.com</a> 
+                    &nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-phone"></i>: +90-533-889-4254</div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+   
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Please Login To Enter </h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+              
+                    <div class="col-md-8">
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+ 
+                    <button type="submit" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-log-in"></i> Login</button>
+                  </form>
+                       
+                </div>
+             
+              
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2015 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/jquery-1.11.1.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/bootstrap.js' %}"></script>
+</body>
+</html>
+
+
+

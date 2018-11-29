@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+   
+    <title>Face Biometrics - PCC offering  {{ customer.name }} {{ customer.surname }} {{ customer.father_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/bootstrap.css' %}"  />
+    <!-- FONT AWESOME ICONS  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/font-awesome.css' %}" />
+    <!-- CUSTOM STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/style.css' %}"  />
+</head>
+<body>
+    <header class="btn_section">
+        <div class="container hidden-print">
+            <div class="row">
+                 <div class="col-md-12">
+                    <div class="col-md-2">
+                           <a class="btn btn-default  hidden-print" href="/FaceBiometricsApp/"> <i class="glyphicon glyphicon-arrow-left"></i> Back to Home </a>
+                      </div> &nbsp; &nbsp;&nbsp;&nbsp;
+                      <div class="col-md-6 hidden-print" >
+                 <i class="glyphicon glyphicon-envelope"></i>
+                    <a href="mailto:mule.dtu.it@gmail.com" style="color: #FFF">info@fbpcc.com</a> 
+                    &nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-phone"></i>: +90-533-889-4254
+                </div>
+                <div class="header-menu pull-right" >
+                    
+                        Welcome {{user.get_full_name}}
+                        
+                                <a href="{% url 'logout' %}" class="btn btn-default btn-xs">
+                                        <i class=""></i>&nbsp; Logout</a>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+  
+    <div class="content-wrapper">
+        <div class="container" style="">
+            <div class="row">
+            	
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Ethiopian Federal Police Crime Investigation Bureau</h4>
+                    <h3 style="text-align: center;">Forensic Examination Diroctorate</h3>
+                    <h4 style="text-align: center;">Certification of Police Clearance</h4>
+                </div>
+
+            </div>
+             
+            <div class="col-md-12">
+                        <div class="alert alert-infoo">
+                            <div class="row">
+                                <div class="col-md-2">
+                                <img class="img-responsive " width="64" height="64" src="{% static 'FaceRecognitionApp/img/user.png' %}">
+                          </div>
+                          <div class="md-10">
+                                <p style="font-size: 20px;padding: 10px"><strong>Full name: {{ customer.name }} {{ customer.surname }} {{ customer.father_name }}</strong>&nbsp; &nbsp;SEX: <span style="text-decoration: underline;">{{ customer.sex }}</span>, &nbsp;&nbsp;Date of birth: <span style="text-decoration: underline;">{{ customer.date_of_birth }}</span>
+                                </p>
+                             
+                             <p style="font-size: 20px;">Place of Birth: <span style="text-decoration: underline;">{{ customer.place_of_birth }}</span>,  &nbsp; &nbsp;Nationality: <span style="text-decoration: underline;"> {{ customer.nationality }},</span>&nbsp;&nbsp; Passport/Residence ID: <span style="text-decoration: underline;">{{ customer.passport_number_or_residence_id }}</span></p>
+                           </div>
+
+                            </div>
+                           <hr class="style10">
+                            
+                            {%if application %}
+                             <p>Reason for request: <span style="text-decoration: underline;">{{ application.reason_for_request}}</span></p>
+                             <p>Clearance requested by: <span style="text-decoration: underline;">{{ application.clearance_requested_by}}</span></p>
+                             <p>Reference number: <span style="text-decoration: underline;">{{ application.reference_number}}</span> &nbsp;, and Date: 
+                                <span style="text-decoration: underline;">{{ application.date}}</span></p>   
+                        {%endif%}
+                             
+                           
+                                <hr class="style10" style="color: red">
+                              {% if customer.crime_set.all %} 
+                                {% for crime in customer.crime_set.all %}
+
+                                <p><strong>{{ crime.crime_title}}</p></strong>
+                                <ul>
+                                    <li>{{ crime.crime_description}} on {{ crime.date_of_crime_happened}}</li>
+                                </ul>
+                                
+                                 {% endfor %}
+                                  <p> <strong>This to certify that the above named person has  been convicted of the above listed crime/s of misdemeanor until the date of issued certificate.</strong>  
+                            </p>
+                                 {% else %}
+                         
+                         <p> <strong>              
+                         This to certify that the above named person has not been convicted of any crime of misdemeanor until the date of issued certificate.
+                            </strong></p>
+                             {% endif %}
+                           <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <p> <strong>Signed by </strong>  ...................................................................... <strong class="pull-right">Issuing date: <span style="text-decoration: underline;">{% now 'd/m/Y' %}</span></strong></p>
+                                </div>
+                               <div class="col-md-4 pull-right"></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+     
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; {% now 'Y' %} Federal Police Crime Investigation Bureau | By :
+                    <a class="hidden-print" href="mailto:mule.dtu.it@email.com"><i class="glyphicon glyphicon-email"></i></a>
+                    Mulatu Gebeyaw (MSc fellow in Software Engineering)
+                     
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+     <script src="{% static 'FaceRecognitionApp/assets/js/jquery-1.11.1.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/bootstrap.js' %}"></script>
+</body>
+</html>
+

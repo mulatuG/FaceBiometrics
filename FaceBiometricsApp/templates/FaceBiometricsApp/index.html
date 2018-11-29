@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  
+    <title>Prototype: Improved Ethiopian Police Clearnace Certificate Using Facebiometrics</title>
+    {% load static %}
+
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/bootstrap.css' %}"  />
+    <!-- FONT AWESOME ICONS  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/font-awesome.css' %}" />
+    <!-- CUSTOM STYLE  -->
+    <link rel="stylesheet" href="{% static 'FaceRecognitionApp/css/style.css' %}"  />
+</head>
+<body>
+    <header class="header btn_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-2 hidden-print">
+                    	 <a class="btn btn-default  hidden-print" href="/admin/" target="_blank">Go to Adminstration <i class="glyphicon glyphicon-arrow-right"></i></a>
+                    </div>
+                      <div class="col-md-6 hidden-print" >
+                 <i class="glyphicon glyphicon-envelope"></i>
+                    <a href="mailto:mule.dtu.it@gmail.com" style="color: #FFF">info@fbpcc.com</a> 
+                    &nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-phone"></i>: +90-533-889-4254
+                </div>
+                <div class="header-menu hidden-print" >
+                    
+                        Welcome {{user.get_full_name}}
+                        
+                                <a href="{% url 'logout' %}" class="btn btn-default btn-xs">
+                                        <i class=""></i>&nbsp; Logout</a>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+  
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <h4 class="page-head-line">Dashboard : Improved Ethiopian Police Clearnace Certificate Prototype Using Facebiometrics</h4>
+                    
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="alert alert-success" style="font-size: 16px;">
+                        
+                       <p style="color:#000">Face recognition works like this: First, face from an image/video is detected and features are extracted from it. After features are extracted, normalization follows. Finally, feature classification leads to face recognition.
+                        <a href="help" class="btn btn-success hidden-print"><i  class="glyphicon glyphicon-refresh" ></i> Need Help?</a>
+                        <h4> </h4></p>
+                      
+                    </div>
+                </div>
+
+            </div>
+            <div class="row " >
+                <div class="col-md-12 btn_section"> 
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <div class="dashboard-div-wrapper bk-clr-one">
+                       <a href="pcc_application"> <i  class="glyphicon glyphicon-th-large dashboard-div-icon" ></i>
+                        </a>
+                        <h4>New Application</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <div class="dashboard-div-wrapper bk-clr-one">
+                       <a href="add_customer"> <i  class="fa fa-user-plus dashboard-div-icon" ></i></a>                        
+                         <h4>New Customer </h4>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                        <div class="dashboard-div-wrapper bk-clr-one">
+                           <a href="new_crime"> <i  class="fa fa-user-plus dashboard-div-icon" ></i></a>                        
+                             <h4>New Criminal</h4>
+                        </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <div class="dashboard-div-wrapper bk-clr-one">
+                      <a href="FaceRecognitionLogic"> <i  class="glyphicon glyphicon-camera dashboard-div-icon" ></i></a>
+                       <h4>Face Recognition </h4>
+                 </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                        <div class="dashboard-div-wrapper bk-clr-one">
+                           <a href="MachineTrainUsingEigenFaces"> <i  class="fa fa-cogs dashboard-div-icon" ></i></a>                        
+                             <h4>Model Training</h4>
+                        </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                        <div class="dashboard-div-wrapper bk-clr-one">
+                           <a href="customer_list"> <i  class="glyphicon glyphicon-th dashboard-div-icon" ></i></a>                        
+                             <h4>Customer List</h4>
+                        </div>
+                </div>
+              </div>
+            </div>
+           
+           
+</div>
+       </div>
+       
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer class="btn_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2018 Improved Ethiopian Police Clearnace Certificate Prototype Using Facebiometrics| By : <a href="mailto:mule.dtu.it@gmail.com" target="_blank">Mulatu Astarkie</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/jquery-1.11.1.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'FaceRecognitionApp/assets/js/bootstrap.js' %}"></script>
+</body>
+</html>
